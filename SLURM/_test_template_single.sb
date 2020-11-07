@@ -28,14 +28,14 @@ echo SLURM_SUBMIT_DIR=$sub_dir
 cd $sub_dir
 
 home_dir=$(realpath ..)
-network_fp=$home_dir/data/networks/$network.edg
-emb_fp=$home_dir/result/emb/$name/$network\_single.emb
-stat_fp=$home_dir/result/stat/$name/$network\_single.txt
-
 networks=($(cat $home_dir/data/networks.txt)) # List of all networks
 weighted=($(cat $home_dir/data/weighted.txt)) # Indication of whether the network is weighted
 network=${networks[$SLURM_ARRAY_TASK_ID]} # Pick network based on array ID
 echo $network
+
+network_fp=$home_dir/data/networks/$network.edg
+emb_fp=$home_dir/result/emb/$name/$network\_single.emb
+stat_fp=$home_dir/result/stat/$name/$network\_single.txt
 
 ### MODIFY3
 #cd path_to_source # go to source directory if needed
