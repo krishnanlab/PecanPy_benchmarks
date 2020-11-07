@@ -1,0 +1,52 @@
+#!/bin/bash -login
+
+### Job name (change to match name of implementation tested)
+#SBATCH -J node2vec_s ### MODIFY1
+
+### Setting up job arrays to run all networks, modify array size based on total number of networks
+#SBATCH --array=0-7
+
+### Resource allocation, 1 node, 1 core, 8 horus, 32GB memory
+#SBATCH -N 1
+#SBATCH -c 1
+#SBATCH -t 8:00:00
+#SBATCH --mem=32GB
+
+### Slurm output file
+#SBATCH -o ../SLURM_history/%x-%A_%a.out
+
+### Account information
+#SBATCH -C "intel16"
+#SBATCH -A wang-krishnan
+
+# Name of implementation, change to match tested case
+# Also need to make sure the name is consistent with that of the result dir
+name=node2vec ### MODIFY2
+
+sub_dir=$SLURM_SUBMIT_DIR
+echo SLURM_SUBMIT_DIR=$sub_dir
+cd $sub_dir
+
+home_dir=$(realpath ..)
+network_fp=$home_dir/data/networks/$network.edg
+emb_fp=$home_dir/result/emb/$name/$network\_single.emb
+stat_fp=$home_dir/result/stat/$name/$network\_single.txt
+
+networks=($(cat $home_dir/data/networks.txt)) # List of all networks
+weighted=($(cat $home_dir/data/weighted.txt)) # Indication of whether the network is weighted
+network=${networks[$SLURM_ARRAY_TASK_ID]} # Pick network based on array ID
+echo $network
+
+### MODIFY3
+#cd path_to_source # go to source directory if needed
+
+# Run node2vec, replace 'node2vec' with specific implementation, activate environment if needed
+conda activate pecanpy-bench_name-of-env ### MODIFY4
+if ( ${weighted[$SLURM_ARRAY_TASK_ID]} ); then ### MODIFY5
+	echo weighted
+	(/bin/time -v node2vec --input $network_fp --output $emb_fp --workers 1 --weighted) > $stat_fp 2>&1
+else
+	echo unweighted
+	(/bin/time -v node2vec --input $network_fp --output $emb_fp --workers 1) > $stat_fp 2>&1
+fi
+conda deactivate
