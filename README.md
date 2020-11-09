@@ -63,6 +63,7 @@ The table consists of the following columns:
 # TODO
 - [ ] Setup script for result directories
 - [ ] Setup script for data retriving
+- [ ] Script for converting `.edg` to `.npz`
 - [ ] Job submision script for all tests
 - [ ] Script for extracting results from stat files (execute automatically after all jobs finished, setup with SLURM)
 - [ ] Embedding quality evaluation script
