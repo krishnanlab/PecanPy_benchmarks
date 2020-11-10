@@ -10,7 +10,7 @@ def parse_args():
     parser.add_argument('--walk-length', type=int, default=80, help="Length of walk")
     parser.add_argument('--num-walks', type=int, default=10, help="Number of walks")
     parser.add_argument('--iter', type=int, default=1, help="Epochs in SGD")
-    parser.add_argument('--workers', type=int, default=1, help="Number of workers")
+    parser.add_argument('--workers', type=int, default=0, help="Number of workers, 0 is full")
     parser.add_argument('--p', type=float, default=1, help="Return parameter")
     parser.add_argument('--q', type=float, default=1, help="Inout parameter")
     return parser.parse_args()
