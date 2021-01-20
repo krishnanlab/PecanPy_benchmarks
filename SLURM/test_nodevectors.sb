@@ -17,7 +17,6 @@
 
 ### Account information
 #SBATCH -C "intel16"
-#SBATCH -A wang-krishnan
 
 # Name of implementation, change to match tested case
 # Also need to make sure the name is consistent with that of the result dir
