@@ -1,0 +1,17 @@
+#!/bin/bash -login
+
+#SBATCH -J aggregate
+#SBATCH -N 1
+#SBATCH -c 1
+#SBATCH -t 1:00:00
+#SBATCH --mem=8G
+#SBATCH -o ../SLURM_history/%x-%A.out
+#SBATCH -C "intel16"
+
+sub_dir=$SLURM_SUBMIT_DIR
+echo SLURM_SUBMIT_DIR=$sub_dir
+cd $sub_dir
+cd ../script/analysis
+
+python get_test_info.py
+python evaluate.py

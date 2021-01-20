@@ -1,5 +1,6 @@
 __pycache__/
 data/
+result/
 SLURM_history/
 script/interface/node2vec/
 script/interface/node2vec_cpp/snap/
