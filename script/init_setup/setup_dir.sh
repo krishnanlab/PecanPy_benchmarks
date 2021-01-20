@@ -24,10 +24,6 @@ if [ ! -d result/stat ]; then
     mkdir result/stat # directory for holding runtime statistics
 fi
 
-if [ ! -d result/stat_summary ]; then
-    mkdir result/stat_summary # directory for holding runtime statistics summaries
-fi
-
 for i in emb stat; do
 	for j in $(cat data/implementation_list.txt); do
 		mkdir result/$i/$j
