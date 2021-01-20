@@ -29,4 +29,5 @@ make
 cp nod2vec ../../../../node2vec_cpp_cli
 
 echo Done
+echo
 
