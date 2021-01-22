@@ -124,11 +124,11 @@ has its own test script, e.g. `SLURM/test_pecanpy-PreComp_single.sb` is the batc
 with single-core resource configuration.
 
 ***A note on testing `nodevectors` implementation:*** for any other implementation, the `p` and `q` parameters are set 
-to `1` by default, but for `nodevectors`, they are set to `1.0001`. If `p` and `q` are set to `1`, `nodevectors` will 
+to `1` by default, but for `nodevectors`, they are set to `1.001`. If `p` and `q` are set to `1`, `nodevectors` will 
 automatically perform 1st order random 
 ([link to source](https://github.com/VHRanger/CSRGraph/blob/8fb8f0e44aba1f147272bd8db19875756fde999f/csrgraph/graph.py#L241-L251)) 
 walk, which is significantly faster than 2nd order random walk as all other implementations do, and hence providing 
-biased testing results. Setting `p` and `q` to `1.0001` disable the automatic fall back to 1st order random walk and 
+biased testing results. Setting `p` and `q` to `1.001` disable the automatic fall back to 1st order random walk and 
 at the same time keeps the results close to when `p` and `q` are set to `1`.
 
 After all test jobs are finished, the following Python script `~/script get_test_info.py` will be executed 
