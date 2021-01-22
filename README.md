@@ -191,9 +191,9 @@ be replaced by the method's name, and modify `script/init_setup/setup_envs.sh` t
   * `--q` - inout parameter
 * For proper runtime stat retrieval, add the following printing statements to report execution time for each corresponding stage
   ```python
-  print("Took %d:%d:%.2f to load graph"%(hrs, mins, secs))
-  print("Took %d:%d:%.2f to pre-compute transition probabilities"%(hrs, mins, secs))
-  print("Took %d:%d:%.2f to generate walks"%(hrs, mins, secs))
-  print("Took %d:%d:%.2f to train embeddings"%(hrs, mins, secs))
+  print("Took %02d:%02d:%05.2f to load graph"%(hrs, mins, secs))
+  print("Took %02d:%02d:%05.2f to pre-compute transition probabilities"%(hrs, mins, secs))
+  print("Took %02d:%02d:%05.2f to generate walks"%(hrs, mins, secs))
+  print("Took %02d:%02d:%05.2f to train embeddings"%(hrs, mins, secs))
   ```
 * Add data retrieval scripts and any necessary preprocessing scripts for new networks (as edgelist files, with `.edg` extension)
