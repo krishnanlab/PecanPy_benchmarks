@@ -2,6 +2,7 @@ import csrgraph as cg
 import nodevectors
 import argparse
 import io
+from time import time
 from contextlib import redirect_stdout
 
 def parse_args():
@@ -41,7 +42,11 @@ def convert_outstr(outstr):
 
 
 def main(args):
+    t = time()
     g = cg.read_edgelist(args.input, sep='\t')
+    load_time = time() - t
+    print("Took %02d:%02d:%05.2f to load graph"%(load_time//3600, load_time%3600//60, load_time%60))
+
     f = io.StringIO()
     mdl = nodevectors.Node2Vec(n_components=args.dimensions, walklen=args.walk_length, 
                                epochs=args.num_walks, threads=args.workers, 
