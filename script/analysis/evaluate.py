@@ -168,7 +168,7 @@ for network in networks:
 
             auroc_mat[:,i] = auroc_score
             
-        auroc_score = np.median(auroc_mat, axis=1)
+        auroc_score = np.mean(auroc_mat, axis=1)
 
         df['auROC'] = auroc_score
         df['Network'] = network

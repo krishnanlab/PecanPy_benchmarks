@@ -3,7 +3,7 @@
 #SBATCH -J aggregate
 #SBATCH -N 1
 #SBATCH -c 1
-#SBATCH -t 1:00:00
+#SBATCH -t 3:50:00
 #SBATCH --mem=8G
 #SBATCH -o ../SLURM_history/%x-%A.out
 #SBATCH -C "intel16"

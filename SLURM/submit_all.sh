@@ -5,7 +5,7 @@ for i in $(cat ../data/implementation_list.txt); do
     echo Submitting test job for $i...
 
     sid=$(sbatch test_$i\.sb)
-    id_list+=(${sid##* })
+    sid_list+=(${sid##* })
 
     sid=$(sbatch test_$i\_single.sb)
     sid_list+=(${sid##* })
