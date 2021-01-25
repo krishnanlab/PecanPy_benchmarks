@@ -151,9 +151,17 @@ The table consists of the following columns:
 
 To ensure the quality of the produced embeddings, we perform node classification tasks as presented in 
 [node2vec](https://arxiv.org/abs/1607.00653) for BlogCatalog, PPI, and Wikipedia. Slight modification to the labels for PPI 
-was made to remove labelsets with less than 10 positives to ensure meaningful evaluation metrics. 5-fold cross validation 
-was repeated 10 times using l2 regularized [Logistic Regression](https://arxiv.org/abs/1607.00653) from Scikit-Learn. Finally,
-the predictions are scored by [auROC](https://arxiv.org/abs/1607.00653)
+was made to remove labelsets with less than 10 positives to ensure meaningful evaluation metrics. After the filtering using 
+the above criterion, there are 38 node classes in BlogCatalog, 50 node classes in PPI, and 21 node classes in Wikipedia. 
+For each node class in a network, a one vs rest l2 regularized 
+[Logistic Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) is 
+trained and evaluated through 5-fold cross validation. Each test fold is scored using auROC separately, and the mean auROC 
+score across 5 folds is reported. This evaluation is repeated 10 times and the mean reported scores are taken as the final 
+evaluation score the the class. 
+
+After the evaluation, for each network, there should be a list of scores for each implementation, where the entries correspond 
+to evaluation score for a particular node class. A wilcoxon paired test is then applied for each implementation against the 
+original Python implementation to see if there is any significant performance drop using the new implementation.
 
 
 ## 5. Extending Benchmarks
