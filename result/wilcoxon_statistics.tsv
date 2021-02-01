@@ -1,0 +1,16 @@
+Wilcoxon p-val	Method Compared	Network
+4.580e-03	Original C++	BlogCatalog
+8.561e-01	PecanPy PreComp	BlogCatalog
+4.043e-01	PecanPy SparseOTF	BlogCatalog
+9.134e-01	PecanPy DenseOTF	BlogCatalog
+7.740e-08	NodeVectors	BlogCatalog
+1.976e-03	Original C++	PPI
+7.181e-02	PecanPy PreComp	PPI
+7.030e-01	PecanPy SparseOTF	PPI
+2.257e-01	PecanPy DenseOTF	PPI
+7.557e-10	NodeVectors	PPI
+2.413e-04	Original C++	Wikipedia
+6.333e-01	PecanPy PreComp	Wikipedia
+7.598e-02	PecanPy SparseOTF	Wikipedia
+1.373e-01	PecanPy DenseOTF	Wikipedia
+8.392e-05	NodeVectors	Wikipedia
