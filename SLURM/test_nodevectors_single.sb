@@ -38,5 +38,5 @@ cd ../script/interface # go to source directory if needed
 
 # Run node2vec, replace 'node2vec' with specific implementation
 conda activate pecanpy-bench_nodevectors
-(/bin/time -v python nodevectors_cli.py --input $network_fp --output $emb_fp --p 1.001 --q 1.001) > $stat_fp 2>&1
+(/bin/time -v python nodevectors_cli.py --input $network_fp --output $emb_fp --p 1.001 --q 1.001 --workers 1) > $stat_fp 2>&1
 conda deactivate
