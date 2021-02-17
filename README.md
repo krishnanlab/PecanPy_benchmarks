@@ -3,18 +3,24 @@
 This reposotory provides scripts for reproducing the benchmarking results of several implementations of node2vec 
 as presented in [PecanPy](https://github.com/krishnanlab/PecanPy). 
 
-Note: all test scripts provided use the SLURM workload manager; this package uses 
-[Anaconda](https://www.anaconda.com/products/individual) to manage environments through conda environments, so 
-that different software packages can be run despite they might have different dependency requirements.
+***Note**: all test scripts provided use the [SLURM workload manager](https://slurm.schedmd.com/documentation.html), 
+and will **NOT** run on a personal computer; this package uses [Anaconda](https://www.anaconda.com/products/individual) 
+to manage environments through conda environments, so that different software packages can be run despite they might 
+have different dependency requirements.*
 
 ## 1. Quick start
 
 To get started and perform all tests, run the following commands which will first setup the working environment 
 and then submit all job scripts for testing.
+
+***WARNING**: the whole dataset takes up 11GB of sapce, make sure you have enough space before setting up.*
+
 ```bash
 sh setup.sh # setup working environment
 sh SLURM/submit_all.sh # submitting test job scripts
 ```
+
+***Note**: it might take up to 30 minutes to fully setup, mainly due to download of large data files*
 
 After all jobs are done (***one might encounter memory errors due to limitations of some implementation***), two 
 files will be created under the `result/` directory:
