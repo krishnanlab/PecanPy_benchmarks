@@ -14,16 +14,19 @@ echo Unpacking data...
 tar -xzf "Supervised-learning is an accurate method for network-based gene classification - Data.tar.gz" --strip-components=1
 echo Moving BioGRID
 mv networks/BioGRID.edg .
-echo Moving GIANT-TN
-mv networks/GIANT-TN.edg .
+echo Moving GIANT-TN-c01
+mv networks/GIANT-TN.edg ./GIANT-TN-c01.edg
 echo Moving STRING
 mv networks/STRING.edg .
 rm -rf "Supervised-learning is an accurate method for network-based gene classification - Data.tar.gz" LICENSE.txt embeddings/ networks/ labels/
 
-echo Construct GIANT-TN-c01 by obtaining edges of GIANT-TN with weights greater than 0.01
-awk '{ if ($3 > 0.01) print $1"\t"$2"\t"$3 }' GIANT-TN.edg > GIANT-TN-c01.edg
+echo Downloading full GIANT-TN network...
+wget http://giant.princeton.edu/static//networks/all_tissues.gz
+gzip -d all_tissues.gz
+echo Modifying edgelist by removing unwanted node class labels...
+awk '{if (NF == 3) print $1"\t"$2"\t"$3; else print $1"\t"$2"\t"$4}' all_tissues > GIANT-TN.edg
 
-echo Downloading SSN200 network from Fast Sinksource
+echo Downloading SSN200 network from Fast Sinksource...
 wget --no-check-certificate https://bioinformatics.cs.vt.edu/~jeffl/supplements/2019-fastsinksource/downloads/200-species/2018_09-s200-seq-sim-e0_1-net.txt.gz
 
 echo Unpacking data...
@@ -33,7 +36,7 @@ echo
 mv 2018_09-s200-seq-sim-e0_1-net.txt SSN200.edg
 
 # making dense networks
-echo Converting edgelists to dense matrix files for DenseOTF mode
+echo Converting edgelists to dense matrix files for DenseOTF mode...
 mkdir dense
 
 source ~/.bashrc
