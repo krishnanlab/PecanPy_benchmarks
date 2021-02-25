@@ -26,7 +26,7 @@ cp node2vec_timed.cpp snap/examples/node2vec/node2vec.cpp
 
 cd snap/examples/node2vec
 make
-cp nod2vec ../../../../node2vec_cpp_cli
+cp node2vec ../../../../node2vec_cpp_cli
 
 echo Done
 echo
